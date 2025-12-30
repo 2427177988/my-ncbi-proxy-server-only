@@ -1,20 +1,19 @@
 {
-  "name": "my-ncbi-proxy-server",
+  "name": "my-ncbi-proxy-server-only",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "type": "module",
+  "main": "server.js", // 这行可以保留，但 Vercel 不会使用它来启动 API Routes
+  "type": "module", // 确保支持 ES modules
   "scripts": {
-    "start": "node server.js"
+    "dev": "node server.js", // 本地开发时可能用到
+    "build": "echo 'No build step needed for Vercel API Routes'" // Vercel API Routes 通常不需要构建
   },
   "dependencies": {
-    "axios": "^1.13.2",
+    "express": "^4.18.2", // 虽然 API Routes 不直接用 Express，但如果你的工具链需要它
     "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "jsdom": "^27.4.0",
-    "node-fetch": "^3.3.2"
+    "axios": "^1.6.0",
+    "jsdom": "^22.1.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "engines": {
+    "node": ">=18" // 推荐指定 Node.js 版本
+  }
 }
